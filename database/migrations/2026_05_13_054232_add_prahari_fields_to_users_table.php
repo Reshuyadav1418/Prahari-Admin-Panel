@@ -20,6 +20,8 @@ return new class extends Migration
             $table->timestamp('otp_expire_at')->nullable()->after('otp');
             $table->boolean('is_active')->default(true)->after('otp_expire_at');
             // $table->enum('role', ['admin', 'user', 'prahari'])->default('prahari')->change();
+
+            $table->string('role')->default('user')->change();
         });
     }
 
@@ -34,6 +36,8 @@ return new class extends Migration
             $table->string('password')->nullable(false)->change();
             $table->dropColumn(['phone', 'otp', 'otp_expire_at', 'is_active']);
             // $table->enum('role', ['admin', 'user'])->default('user')->change();
+                        $table->string('role')->default('user')->change();
+
         });
     }
 };
