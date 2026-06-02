@@ -26,6 +26,13 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
+# EXPOSE 80
+
+# CMD ["apache2-foreground"]
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+COPY start.sh /start.sh
+
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]
